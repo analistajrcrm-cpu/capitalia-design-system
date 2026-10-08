@@ -1,0 +1,41 @@
+<!-- @dsCard group="Colateral" viewport="1200x760" name="Anuncio y firma" subtitle="Anuncio horizontal y generador de firma de correo" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Capitalia — colateral</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0}body{padding:28px 32px;background:var(--surface-page)}
+.wrap{max-width:1136px;margin:0 auto;display:grid;gap:26px}
+.frame{overflow:hidden;border-radius:var(--radius-sm)}
+.h{font:var(--type-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">
+const {AdBanner,EmailSignature,Input,Tabs}=window.CapitaliaDesignSystem_369e3a;
+function App(){
+  const [t,setT]=React.useState('Anuncio');
+  const [d,setD]=React.useState({first:'Juan',last:'Pérez',role:'Mánager de Ventas',email:'juanperez@capitalia.mx',phone:'999 315 2501'});
+  const set=k=>e=>setD(s=>({...s,[k]:e.target.value}));
+  const AD_W=1136/1584, SIG_W=1136/1536;
+  return <div className="wrap">
+    <Tabs items={['Anuncio','Firma de correo']} value={t} onChange={setT}/>
+    {t==='Anuncio'
+      ? <div><div className="h">1584 × 772 · anuncio horizontal</div>
+          <div className="frame" style={{height:772*AD_W}}>
+            <div style={{transform:'scale('+AD_W+')',transformOrigin:'top left'}}><AdBanner/></div></div></div>
+      : <div style={{display:'grid',gridTemplateColumns:'1fr 300px',gap:28,alignItems:'start'}}>
+          <div><div className="h">1536 × 340 · firma de correo</div>
+            <div className="frame" style={{height:340*SIG_W}}>
+              <div style={{transform:'scale('+SIG_W+')',transformOrigin:'top left'}}>
+                <EmailSignature name={[d.first,d.last]} role={d.role} email={d.email} phone={d.phone}/></div></div></div>
+          <div style={{display:'grid',gap:14,background:'var(--surface-card)',border:'1px solid var(--border-subtle)',borderRadius:'var(--radius-lg)',padding:20}}>
+            <div className="h" style={{margin:0}}>Datos</div>
+            <Input label="Nombre" value={d.first} onChange={set('first')}/>
+            <Input label="Apellido" value={d.last} onChange={set('last')}/>
+            <Input label="Puesto" value={d.role} onChange={set('role')}/>
+            <Input label="Email" value={d.email} onChange={set('email')}/>
+            <Input label="Celular" value={d.phone} onChange={set('phone')}/>
+          </div>
+        </div>}
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>

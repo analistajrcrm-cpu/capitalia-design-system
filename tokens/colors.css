@@ -1,0 +1,85 @@
+:root{
+/* ---- Brand primaries (exact values from the brand book, "Colores primarios") ---- */
+--plum-900:#311E34;   /* CMYK 78 90 44 59 · RGB 49 30 52 */
+--orange-500:#D86F3A; /* CMYK 2 70 90 0 · RGB 216 111 58 */
+--bone-200:#E9E3D8;   /* CMYK 10 10 17 0 · RGB 233 227 216 */
+--cream-50:#FBF7F3;   /* brand-book page ground */
+
+/* ---- Extended ramps (derived in oklch from the three primaries; not in the printed book) ---- */
+--plum-800:#45304A;
+--plum-700:#5B4361;
+--plum-600:#74597B;
+--plum-400:#9C86A0;
+--plum-200:#C9BDCC;
+
+--orange-700:#A64E22;
+--orange-600:#C25F2E;
+--orange-400:#E28D5F;
+--orange-200:#F2C4A9;
+--orange-100:#F9E4D7;
+
+--bone-100:#F2EEE6;
+--bone-300:#D8D1C3;
+--bone-400:#C3BAA8;
+--bone-500:#A79D8A;
+
+--white:#FFFFFF;
+
+/* ---- Transparencies (protection scrims over photography) ---- */
+--plum-a80:rgba(49,30,52,.80);
+--plum-a60:rgba(49,30,52,.60);
+--plum-a12:rgba(49,30,52,.12);
+--plum-a08:rgba(49,30,52,.08);
+--bone-a24:rgba(233,227,216,.24);
+--bone-a40:rgba(233,227,216,.40);
+
+/* ---- Semantic / status (derived, kept desaturated to sit next to the primaries) ---- */
+--green-600:#4F7A52;
+--amber-600:#C08A2E;
+--red-600:#B33B2B;
+
+/* ---- Semantic aliases: use these in product code ---- */
+--surface-page:var(--cream-50);
+--surface-card:var(--white);
+--surface-raised:var(--bone-100);
+--surface-sunken:var(--bone-200);
+--surface-ink:var(--plum-900);      /* the dark brand panel */
+--surface-ink-soft:var(--plum-800);
+--surface-accent:var(--orange-500); /* the orange field */
+--surface-accent-soft:var(--orange-100);
+
+--text-primary:var(--plum-900);
+--text-secondary:var(--plum-700);
+--text-muted:var(--plum-600);
+--text-inverse:var(--bone-200);
+--text-inverse-strong:var(--white);
+--text-accent:var(--orange-500);
+--text-on-accent:var(--white);
+
+--border-subtle:var(--plum-a12);
+--border-strong:var(--plum-900);
+--border-inverse:var(--bone-a40);
+--border-accent:var(--orange-500);
+
+--focus-ring:var(--orange-500);
+--scrim-photo:var(--plum-a60);
+
+--status-success:var(--green-600);
+--status-warning:var(--amber-600);
+--status-danger:var(--red-600);
+}
+
+/* Dark brand panel: drop this class on any container to flip the aliases. */
+.cap-ink{
+--surface-page:var(--plum-900);
+--surface-card:var(--plum-800);
+--surface-raised:var(--plum-800);
+--surface-sunken:var(--plum-900);
+--text-primary:var(--bone-200);
+--text-secondary:var(--bone-300);
+--text-muted:var(--plum-200);
+--text-inverse:var(--plum-900);
+--border-subtle:var(--bone-a24);
+--border-strong:var(--bone-200);
+color:var(--text-primary);background:var(--surface-page);
+}

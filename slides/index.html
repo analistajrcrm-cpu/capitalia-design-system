@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Capitalia — láminas</title>
+<link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;background:#1b1119;height:100%}#stage{position:fixed;inset:0;display:grid;place-items:center}
+#scaler{width:1280px;height:720px;transform-origin:center;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#nav{position:fixed;left:0;right:0;bottom:18px;display:flex;gap:8px;justify-content:center;z-index:5}
+#nav button{border:0;height:30px;padding:0 14px;border-radius:999px;background:rgba(233,227,216,.16);color:var(--bone-200);font:var(--type-body-sm);cursor:pointer}
+#nav button[aria-current=true]{background:var(--orange-500);color:#fff}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../_ds_bundle.js"></script></head><body>
+<div id="stage"><div id="scaler"><div id="root"></div></div></div><div id="nav"></div>
+<script type="text/babel">
+const NSO=window.CapitaliaDesignSystem_369e3a;
+const SLIDES=[
+ ['Portada',()=><NSO.CoverSlide eyebrow="Mérida, Yucatán" lead="Una ciudad planeada no solo se construye; se vive, se recorre y se convierte en comunidad."/>],
+ ['Etapa',()=><NSO.EtapaSlide body="Recoleta abre la primera etapa de Capitalia: 25 mil m² de áreas verdes, parque lineal, vialidades y servicios entregados desde el día uno."/>],
+ ['Beneficios',()=><NSO.BeneficiosSlide items={["La plusvalía no nace solo del tiempo: nace de la vida que un lugar es capaz de generar.","Parque lineal, plazas y calles arboladas entregadas con cada etapa.","Vialidades, agua y electricidad listas antes de la primera escritura."]}/>],
+ ['Detalle',()=><NSO.DetalleSlide eyebrow="Amenidades" stat="25k" statLabel="m² verdes" items={["Parque lineal de 1.2 km","Casa club y alberca","Juegos infantiles y canchas"]} body="Cada etapa entrega su propio parque. La vida pública no espera a que la ciudad crezca: llega con ella."/>],
+ ['Cierre',()=><NSO.CierreSlide note="Lotes desde 140 m² · Entrega Julio 2030"/>]
+];
+const root=ReactDOM.createRoot(document.getElementById('root'));
+let i=Number(localStorage.getItem('cap-slide')||0)||0;
+const nav=document.getElementById('nav');
+SLIDES.forEach(([n],k)=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>go(k);nav.appendChild(b)});
+function fit(){const s=Math.min(innerWidth/1280,(innerHeight-70)/720);document.getElementById('scaler').style.transform='scale('+s+')';}
+function go(k){i=(k+SLIDES.length)%SLIDES.length;localStorage.setItem('cap-slide',i);
+ root.render(SLIDES[i][1]());[...nav.children].forEach((b,j)=>b.setAttribute('aria-current',j===i));}
+addEventListener('resize',fit);addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+fit();go(i);
+</script></body></html>

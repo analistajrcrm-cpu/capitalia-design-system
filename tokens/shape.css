@@ -1,0 +1,30 @@
+:root{
+/* Radii — the system is either near-square or fully round; nothing in between. */
+--radius-0:0px;
+--radius-xs:2px;
+--radius-sm:4px;
+--radius-md:8px;
+--radius-lg:16px;
+--radius-xl:24px;
+--radius-pill:999px;
+
+/* The petal: a pill with one squared corner. Bottom-right point is the default
+   (as in the "capitalia.mx" and "ETAPA 1" tags). */
+--radius-petal:999px 999px 0 999px;
+--radius-petal-tl:0 999px 999px 999px;
+--radius-petal-tr:999px 0 999px 999px;
+--radius-petal-bl:999px 999px 999px 0;
+
+/* Large petal used to mask photography (one squared corner, three soft lobes) */
+--shape-petal-photo:68% 68% 0 68%; /* @kind other */
+--shape-petal-photo-alt:68% 0 68% 68%; /* @kind other */
+--shape-leaf:100% 0 100% 0; /* @kind other */
+
+/* Big convex sweeps: the plum panel edge and slide photo bands */
+--shape-arc-right:0 50% 50% 0 / 0 100% 100% 0; /* @kind other */
+--shape-arc-bottom:0 0 50% 50% / 0 0 100% 100%; /* @kind other */
+
+--border-w-hair:1px; /* @kind spacing */
+--border-w-thick:2px; /* @kind spacing */
+--border-w-rule:3px; /* @kind spacing */
+}

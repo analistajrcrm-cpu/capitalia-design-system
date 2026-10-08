@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Forms" subtitle="Input, select, checkbox, radio, switch — with error state" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>body{padding:20px;background:var(--surface-page)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}.col{display:grid;gap:14px}.lab{font:var(--type-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--text-muted)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script></head><body><div id="root"></div>
+<script type="text/babel">
+const {Input,Select,Checkbox,Radio,Switch}=window.CapitaliaDesignSystem_369e3a;
+function Demo(){const[v,setV]=React.useState('WhatsApp');const[on,setOn]=React.useState(true);const[ck,setCk]=React.useState(true);
+ return <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24}}>
+  <div className="col">
+    <Input label="Nombre" placeholder="María Canul"/>
+    <Input label="Correo" type="email" placeholder="nombre@correo.com" hint="Te contactamos en 24 h."/>
+    <Input label="Teléfono" defaultValue="999 315" error="Faltan dígitos"/>
+  </div>
+  <div className="col">
+    <Select label="Etapa de interés" options={["Etapa 1 — Recoleta","Etapa 2","Etapa 3"]}/>
+    <Radio label="¿Cómo prefieres el contacto?" name="via" direction="row" options={["WhatsApp","Llamada","Correo"]} value={v} onChange={e=>setV(e.target.value)}/>
+    <Checkbox label="Quiero recibir avances de obra" description="Un correo al mes." checked={ck} onChange={e=>setCk(e.target.checked)}/>
+    <Switch label="Recordatorio de mensualidad" description="Aviso 3 días antes." checked={on} onChange={e=>setOn(e.target.checked)}/>
+  </div>
+</div>}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

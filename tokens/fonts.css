@@ -1,0 +1,5 @@
+/* DM Sans is the single brand typeface (brand book p.25: "NOMBRE — DM SANS").
+   No binaries were supplied with the brand book, so the family is loaded from
+   Google Fonts (same foundry release, variable 100–1000 + italics).
+   Drop real .woff2 files in assets/fonts/ and swap the @font-face block below if licensing requires self-hosting. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
